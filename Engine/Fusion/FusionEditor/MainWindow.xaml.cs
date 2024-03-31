@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using FusionEditor.GameProject;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,34 @@ namespace FusionEditor
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += OnMainWindowLoaded;
+        }
+
+        /// <summary>
+        /// Executes when the main window is loaded.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= OnMainWindowLoaded;
+            OpenProjectBrowserDialog();
+        }
+
+        /// <summary>
+        /// Opens the engine browser dialog.
+        /// </summary>
+        private void OpenProjectBrowserDialog()
+        {
+            var projectBrowser = new ProjectBrowser();
+            if (projectBrowser.ShowDialog() == false)
+            {
+                Application.Current.Shutdown();
+            }
+            else
+            {
+
+            }
         }
     }
 }

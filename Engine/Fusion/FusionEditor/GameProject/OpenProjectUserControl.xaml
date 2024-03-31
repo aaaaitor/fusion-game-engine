@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="FusionEditor.GameProject.OpenProjectUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FusionEditor.GameProject"
+             mc:Ignorable="d" Width="800"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ButtonNoEffects" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Chrome" BorderBrush="Transparent" BorderThickness="2" CornerRadius="2" Background="{TemplateBinding Property=Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel Background="#202225" TextElement.FontFamily="Tahoma">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+            <ListBox Width="195" Height="250"/>
+            <Border Width="400" Height="250" Margin="5,0,0,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+            <Border x:Name="openProjectFinalBackground" CornerRadius="15" BorderThickness="2.5" BorderBrush="#40444b" Background="#40444b">
+                <Button x:Name="openProjectFinalButton" FontSize="15" Content="Open project" Width="105" IsDefault="True" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="openProjectFinalButton_MouseEnter" MouseLeave="openProjectFinalButton_MouseLeave" Click="openProjectFinalButton_Click"/>
+            </Border>
+            <Border x:Name="cancelFinalBackground" CornerRadius="15" BorderThickness="2.5" BorderBrush="#40444b" Background="#40444b" Margin="40,0,0,0">
+                <Button x:Name="cancelFinalButton" FontSize="15" Content="Cancel" Width="60" IsCancel="True" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="cancelFinalButton_MouseEnter" MouseLeave="cancelFinalButton_MouseLeave" Click="cancelFinalButton_Click"/>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
