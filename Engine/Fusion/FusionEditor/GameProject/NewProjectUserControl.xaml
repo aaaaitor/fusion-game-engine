@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FusionEditor.GameProject"
              mc:Ignorable="d" Width="800"
+             d:DataContext="{d:DesignInstance Type=local:NewProject, IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -20,6 +21,10 @@
             </Setter>
         </Style>
     </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <local:NewProject/>
+    </UserControl.DataContext>
     
     <StackPanel Background="#202225" TextElement.FontFamily="Tahoma">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
@@ -27,12 +32,12 @@
             <Border Width="400" Height="250" Margin="5,0,0,0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-            <TextBlock Text="Name:" Width="60" FontSize="20" Foreground="#0d0d0e"/>
-            <TextBlock Width="550" FontSize="20" TextDecorations="Underline"/>
+            <TextBlock Text="Name:" TextAlignment="Left" VerticalAlignment="Center" Width="60" FontSize="20" Foreground="#0d0d0e" Margin="0,0,10,0"/>
+            <TextBlock Width="545" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding Name}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-            <TextBlock Text="Path:" Width="50" FontSize="20" Foreground="#0d0d0e"/>
-            <TextBlock Width="480" FontSize="20" FontStyle="Italic" TextDecorations="Underline"/>
+            <TextBlock Text="Path:" TextAlignment="Left" VerticalAlignment="Center" Width="60" FontSize="20" Foreground="#0d0d0e" Margin="0,0,10,0"/>
+            <TextBlock Width="480" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding Path}"/>
             <Border x:Name="browseBackground" CornerRadius="15" BorderThickness="2.5" BorderBrush="#40444b" Background="#40444b">
                 <Button x:Name="browseButton" Content="Browse" Width="60" FontSize="15" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="browseButton_MouseEnter" MouseLeave="browseButton_MouseLeave" Click="browseButton_Click"/>
             </Border>
