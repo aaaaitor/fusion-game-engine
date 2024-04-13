@@ -28,16 +28,29 @@
     
     <StackPanel Background="#202225" TextElement.FontFamily="Tahoma">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-            <ListBox Width="195" Height="250"/>
-            <Border Width="400" Height="250" Margin="5,0,0,0"/>
+            <ListBox Width="195" Height="250" ItemsSource="{Binding ProjectTemplates}" x:Name="templateListBox" Background="#292b2f" BorderBrush="#202225" SelectedIndex="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Icon}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding ProjectType}" Foreground="#111111"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Border Width="400" Height="250" Margin="5,0,0,0">
+                <Border.Background>
+                    <ImageBrush ImageSource="{Binding Path=SelectedItem.Screenshot, ElementName=templateListBox}"/>
+                </Border.Background>
+            </Border>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0" >
             <TextBlock Text="Name:" TextAlignment="Left" VerticalAlignment="Center" Width="60" FontSize="20" Foreground="#0d0d0e" Margin="0,0,10,0"/>
-            <TextBlock Width="545" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding Name}"/>
+            <TextBlock Width="545" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding ProjectName}" Background="#202225"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
             <TextBlock Text="Path:" TextAlignment="Left" VerticalAlignment="Center" Width="60" FontSize="20" Foreground="#0d0d0e" Margin="0,0,10,0"/>
-            <TextBlock Width="480" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding Path}"/>
+            <TextBlock Width="480" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding ProjectPath}" Background="#202225"/>
             <Border x:Name="browseBackground" CornerRadius="15" BorderThickness="2.5" BorderBrush="#40444b" Background="#40444b">
                 <Button x:Name="browseButton" Content="Browse" Width="60" FontSize="15" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="browseButton_MouseEnter" MouseLeave="browseButton_MouseLeave" Click="browseButton_Click"/>
             </Border>
