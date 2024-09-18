@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FusionEditor.GameProject"
              mc:Ignorable="d" Width="800"
              d:DataContext="{d:DesignInstance Type=local:NewProject, IsDesignTimeCreatable=True}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
 
     <UserControl.Resources>
         <Style x:Key="ButtonNoEffects" TargetType="{x:Type Button}">
@@ -44,24 +44,31 @@
                 </Border.Background>
             </Border>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0" >
-            <TextBlock Text="Name:" TextAlignment="Left" VerticalAlignment="Center" Width="60" FontSize="20" Foreground="#0d0d0e" Margin="0,0,10,0"/>
-            <TextBlock Width="545" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding ProjectName}" Background="#202225"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0" Width="650">
+            <TextBlock Text="Name:" TextAlignment="Left" VerticalAlignment="Center" Width="65" FontSize="20" Foreground="#40444b" Margin="0,0,10,0" FontWeight="Bold" FontStretch="ExtraCondensed"/>
+            <Border x:Name="nameFinalBackground" CornerRadius="15" BorderThickness="2" BorderBrush="#40444b" Background="#FF5A5E67" Margin="10,1,0,1">
+                <TextBox Width="540" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" Margin="10,2,0,2" BorderThickness="0" SelectionBrush="#FF773CFD"/>
+            </Border>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
-            <TextBlock Text="Path:" TextAlignment="Left" VerticalAlignment="Center" Width="60" FontSize="20" Foreground="#0d0d0e" Margin="0,0,10,0"/>
-            <TextBlock Width="480" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding ProjectPath}" Background="#202225"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0" Width="650">
+            <TextBlock Text="Path:" TextAlignment="Left" VerticalAlignment="Center" Width="55" FontSize="20" Foreground="#40444b" Margin="0,0,10,0" FontWeight="Bold" FontStretch="ExtraCondensed"/>
+            <Border x:Name="pathFinalBackground" CornerRadius="15" BorderThickness="2" BorderBrush="#40444b" Background="#FF5A5E67" Margin="10,1,10,1">
+                <TextBox Width="480" TextAlignment="Left" VerticalAlignment="Center" Foreground="#111111" FontSize="17" Text="{Binding ProjectPath, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" Margin="15,0,0,0" BorderThickness="0" SelectionBrush="#FF773CFD"/>
+            </Border>
             <Border x:Name="browseBackground" CornerRadius="15" BorderThickness="2.5" BorderBrush="#40444b" Background="#40444b">
                 <Button x:Name="browseButton" Content="Browse" Width="60" FontSize="15" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="browseButton_MouseEnter" MouseLeave="browseButton_MouseLeave" Click="browseButton_Click"/>
             </Border>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
             <Border x:Name="createProjectFinalBackground" CornerRadius="15" BorderThickness="2.5" BorderBrush="#40444b" Background="#40444b">
-                <Button x:Name="createProjectFinalButton" FontSize="15" Content="Create project" Width="105" IsDefault="True" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="createProjectFinalButton_MouseEnter" MouseLeave="createProjectFinalButton_MouseLeave" Click="createProjectFinalButton_Click"/>
+                <Button x:Name="createProjectFinalButton" IsEnabled="{Binding IsValid}" FontSize="15" Content="Create project" Width="105" IsDefault="True" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="createProjectFinalButton_MouseEnter" MouseLeave="createProjectFinalButton_MouseLeave" Click="createProjectFinalButton_Click"/>
             </Border>
             <Border x:Name="cancelFinalBackground" CornerRadius="15" BorderThickness="2.5" BorderBrush="#40444b" Background="#40444b" Margin="40,0,0,0">
                 <Button x:Name="cancelFinalButton" FontSize="15" Content="Cancel" Width="60" IsCancel="True" Foreground="#111111" Background="Transparent" Style="{DynamicResource ButtonNoEffects}" MouseEnter="cancelFinalButton_MouseEnter" MouseLeave="cancelFinalButton_MouseLeave" Click="cancelFinalButton_Click"/>
             </Border>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+            <TextBlock Text="{Binding ErrorMsg}" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="Red"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

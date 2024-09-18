@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace FusionEditor
 {
     /// <summary>
     /// Base class for the view models.
     /// </summary>
-    internal class BaseViewModel : INotifyPropertyChanged
+    [DataContract(IsReference = true)]
+    public class BaseViewModel : INotifyPropertyChanged
     {
         //Event for when a property changes.
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -56,7 +56,16 @@ namespace FusionEditor.GameProject
 
         private void createProjectFinalButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var vm = DataContext as NewProject;
+            var projectPath = vm.CreateProject(templateListBox.SelectedItem as ProjectTemplate);
+            bool dialogResult = false;
+            var win = Window.GetWindow(this);
+            if (!string.IsNullOrEmpty(projectPath))
+            {
+                dialogResult = true;
+            }
+            win.DialogResult = dialogResult;
+            win.Close();
         }
 
         private void browseButton_MouseEnter(object sender, MouseEventArgs e)
