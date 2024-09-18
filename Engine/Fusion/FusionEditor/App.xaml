@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:FusionEditor"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="#FF0000" />
+        <SolidColorBrush x:Key="ListViewItemBackgroundSelectedPointerOver" Color="#FF0000" />
     </Application.Resources>
 </Application>
