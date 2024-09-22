@@ -117,6 +117,7 @@ namespace FusionEditor.GameProject
             catch (Exception ex)
             {
                 Debug.WriteLine($@"Error when creating the project: {ex.Message}");
+                MessageBox.Show($@"Error when creating the project: {ex.Message}", "Project creation error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return string.Empty;
             }
         }
@@ -144,6 +145,7 @@ namespace FusionEditor.GameProject
             catch (Exception ex)
             {
                 Debug.WriteLine($@"Error while retrieving project template files: {ex.Message}");
+                MessageBox.Show($@"Error while retrieving project template files: {ex.Message}", "Project creation error", MessageBoxButton.OK, MessageBoxImage.Error);
                 //TODO: log error
             }
         }
